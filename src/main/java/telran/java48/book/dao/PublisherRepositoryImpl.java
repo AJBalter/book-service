@@ -17,7 +17,7 @@ public class PublisherRepositoryImpl implements PublisherRepository {
 
 	@Override
 	public Stream<Publisher> findDistinctByBooksAuthorsName(String authorName) {
-		String jpql = "SELECT p FROM Book b JOIN b.authors a JOIN b.publisher p WHERE a.name = :authorName GROUP BY p";
+		String jpql = "select p from Book b join b.authors a join b.publisher p where a.name = :authorName group by p";
 	    return em.createQuery(jpql, Publisher.class).setParameter("authorName", authorName).getResultStream();
 	}
 
